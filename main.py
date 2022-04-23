@@ -150,8 +150,7 @@ pipe = Pipeline([('vect', CountVectorizer()),
                  ('model', DecisionTreeClassifier())])
 model = pipe.fit(X_train, y_train)
 prediction = model.predict(X_test)
-print("accuracy: {}%".format(round(accuracy_score(y_test, prediction)*100,2)))
-print("Prediction for 'America lose Russia': ", model.predict(["America lose Russia"]))
+print("Accuracy: {}%".format(round(accuracy_score(y_test, prediction)*100,2)))
 cm = metrics.confusion_matrix(y_test, prediction)
 plot_confusion_matrix(cm, classes=['Fake', 'Real'])
 
@@ -163,9 +162,8 @@ pipe = Pipeline([('vect', CountVectorizer()),
                  ('model', MultinomialNB())])
 model = pipe.fit(X_train, y_train)
 prediction = model.predict(X_test)
-print("accuracy: {}%".format(round(accuracy_score(y_test, prediction)*100,2)))
+print("Accuracy: {}%".format(round(accuracy_score(y_test, prediction)*100,2)))
 cm = metrics.confusion_matrix(y_test, prediction)
-print("Prediction for 'America lose Russia': ", model.predict(["America lose Russia"]))
 plot_confusion_matrix(cm, classes=['Fake', 'Real'])
 
 # LogisticRegression
@@ -177,21 +175,7 @@ pipe = Pipeline([('vect', CountVectorizer()),
                  ('model', LogisticRegression())])
 model = pipe.fit(X_train, y_train)
 prediction = model.predict(X_test)
-print("accuracy: {}%".format(round(accuracy_score(y_test, prediction)*100,2)))
-print("Prediction for 'America lose Russia': ", model.predict(["America lose Russia"]))
+print("Accuracy: {}%".format(round(accuracy_score(y_test, prediction)*100,2)))
 cm = metrics.confusion_matrix(y_test, prediction)
 plot_confusion_matrix(cm, classes=['Fake', 'Real'])
 
-# LinearRegression
-print("\n-----Linear Regression-----")
-from sklearn.linear_model import LogisticRegression
-from sklearn.linear_model import LinearRegression
-pipe = Pipeline([('vect', CountVectorizer()),
-                 ('tfidf', TfidfTransformer()),
-                 ('model', LinearRegression())])
-model = pipe.fit(X_train, y_train)
-prediction = model.predict(X_test)
-print("accuracy: {}%".format(round(accuracy_score(y_test, prediction)*100,2)))
-print("Prediction for 'America lose Russia': ", model.predict(["America lose Russia"]))
-cm = metrics.confusion_matrix(y_test, prediction)
-plot_confusion_matrix(cm, classes=['Fake', 'Real'])
